@@ -1,9 +1,9 @@
-# Your Name Here
+# Joshua Gentile
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# Submission Date 11/21/2024
+# Lab 10
+# Lab Section: 18
+# Sources, people worked with, help given to: Austin Barner
 # your
 # comments
 # here
@@ -12,21 +12,42 @@
 
 from hashlib import sha256 
 from pathlib import Path
-
 def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
+
+path1 = Path("rockyou.txt")
+path2 = Path("hash")
+
+try:
+    password = path2.read_text()
+except:
+    print("password read error")
+
+try:
+    contents = path1.read_text()
+except:
+    print("contents read error")
+else:
+    lines = contents.splitlines()
+
+for line in lines:
+    hashed = get_hash(line)
+    if hashed == password:
+        print(line)
 
 
 
 # Files and Exceptions
 
-# For this assignment, you will be writing a program to "crack" a password. You will need to open the file `hash` as this is the password you are trying to "crack."
+# For this assignment, you will be writing a program to "crack" a password. You will need to open the file `hash`
+#  as this is the password you are trying to "crack."
 
 # To begin, you will need to open the 'rockyou.txt' file:
 # - This file contains a list of compromised passwords from the rockyou dump.
 # - This is an abridged version, as the full version is quite large.
-# - The file contains the plaintext version of the passwords. You will need to hash them to check against the password hash you are trying to crack.
+# - The file contains the plaintext version of the passwords. You will need to hash them to check against the password
+#  hash you are trying to crack.
 #   - You can use the provided `get_hash()` function to generate the hashes.
 #   - Be careful, as "hello" and "hello " would generate a different hash.
 
